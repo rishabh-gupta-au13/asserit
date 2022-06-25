@@ -18,7 +18,7 @@ app.use(helmet())
 app.use(mongoSanitize())
 
 require('./dataAdaptor/connection')
-// app.use(require('./routes/index'))
+app.use(require('./routes/index'))
 
 
 app.listen(port, () => {

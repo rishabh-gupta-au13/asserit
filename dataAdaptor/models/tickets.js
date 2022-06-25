@@ -6,12 +6,21 @@ const tickets = new Schema({
     ticketStatus:{
         type:String,
         enum : ['Open','Close'],
+    },
+    ticketNumber:{
+        type:Number
+    },
+    bookingDetails:{
+        name:{
+            type:String
+        },
+        phoneNumber:{
+            type:String
+        }
     }
-
-
 },{timestamps:true});
 
-customers.index({
+tickets.index({
   ticketStatus:1
 });
 
