@@ -5,13 +5,21 @@ const ObjectId=require('mongoose').ObjectId
 
 
 class ticketQuery {
-  async getTheOpenTickets(productDetails) {
+  async getTheOpenTickets() {
     try {
       console.log("hello")
       return ticketModel.find({status:"Close"})
      
     } catch (err) {
       console.log(err);
+    }
+  }
+  async getTheCloseTickets(){
+    try{
+      return ticketModel.find({status:"Open"})
+
+    }catch(err){
+      console.log(err)
     }
   }
   

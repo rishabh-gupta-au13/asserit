@@ -12,10 +12,15 @@ class ticketControllers{
             console.log(err)
             return serverError(req,res,err)
         }
+    }
+    async getCloseTicketes(req,res){
+        try{
+            let get_close_tickets=await ticketQuery.getTheCloseTickets()
 
-      
-
-
+        }catch(err){
+            console.log(err)
+            return serverError(req,res,err)
+        }
     }
 }
 
