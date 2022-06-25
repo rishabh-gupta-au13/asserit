@@ -3,12 +3,14 @@ const Schema = mongoose.Schema;
 
 // schema
 const tickets = new Schema({
-    ticketStatus:{
-        type:String,
-        enum : ['Open','Close'],
-    },
+    
     ticketNumber:{
         type:Number
+    },
+    status:{
+        type:String,
+        default:"Open",
+        enum : ['Open','Close'],
     },
     bookingDetails:{
         name:{

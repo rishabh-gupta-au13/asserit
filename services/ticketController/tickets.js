@@ -22,6 +22,16 @@ class ticketControllers{
             return serverError(req,res,err)
         }
     }
+    async bookTickets(req,res,next){
+        try{
+            let {customerName,phoneNumber}=req.body
+            let bookTicketes=await ticketQuery.bookTheTickets(customerName,phoneNumber);
+
+        }catch(err){
+            console.log(err);
+            return serverError(req,res,err)
+        }
+    }
 }
 
 

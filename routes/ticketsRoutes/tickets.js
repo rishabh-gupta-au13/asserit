@@ -6,8 +6,8 @@ const ticketValidator=require("../../middleware/validation")
 
 // To get the status of ticket
 app.get("/openTickets",ticketControllers.getOpenTickets);
-app.get ("/closeTickets",ticketControllers.getCloseTickets);
-app.patch("/bookTheTicket",ticketValidator.bookTicketValidator,)
+app.get ("/closeTickets",ticketControllers. getCloseTicketes);
+app.patch("/bookTicket",ticketValidator.bookTicketValidator,ticketControllers.bookTickets);
 
 
 

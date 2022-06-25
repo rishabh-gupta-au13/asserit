@@ -10,7 +10,7 @@ class ticketsValidator{
         
         })
         try{
-            const {error}=await schema.validate(req.query);
+            const {error}=await schema.validate(req.body);
             console.log(error);
             if(error){
                 let message=error && error.details[0].message.replace(/"/g,"'");
