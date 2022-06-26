@@ -1,6 +1,6 @@
 const jwt=require("jsonwebtoken");
-const appConfig=require("../../configs/app.json");
-const {clientError}=require("../../utilities/response");
+const appConfig=require("../configs/app.json");
+const {clientError}=require("../utilities/response");
 const userModel=require("../dataAdaptor/models/admin")
 
 

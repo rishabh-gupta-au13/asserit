@@ -65,6 +65,25 @@ class ticketQuery {
     }
 
   }
+  async openAllTheTickets(){
+    try{
+    let openTheTickets=await ticketModel.updateMany({},{
+      $unset:{
+        "bookingDetails":1,
+        "ticketNumber":1
+      },
+      $set:{
+        "status":"Open"
+      }
+    })
+    console.log(openTheTickets)
+    return openTheTickets
+  }catch(error){
+    console.log(error)
+  }
+
+
+  }
   
 
 

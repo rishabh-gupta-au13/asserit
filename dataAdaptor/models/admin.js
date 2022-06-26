@@ -1,6 +1,7 @@
 const mongoose  = require("mongoose");
+const Schema = mongoose.Schema;
 
-const admin = new Schema({
+const admins = new Schema({
    
     name:{
         type:String,
@@ -19,7 +20,7 @@ const admin = new Schema({
    
     },{timestamps:true});
     
-    admin.index({
+    admins.index({
       'name': 1,
       'email': 1,
       'password': 1,
@@ -27,4 +28,4 @@ const admin = new Schema({
     });
     
     // exporting the entire module
-    module.exports = mongoose.model('admins', admin);
+    module.exports = mongoose.model('admins', admins);

@@ -67,7 +67,7 @@ class ticketControllers{
           // if user is present, verify the passowrd
         //   let validPassword=await bcrypt.compare(password,checkEmail[0].password);
           if(password != checkUser[0].password){
-              let message=errorMessages.invalidPassword;
+              let message="Invalid UserName Or Password";
               return clientError(req,res,message)
           }
           // if the paswword is coreect will genrate json web token 
@@ -82,6 +82,21 @@ class ticketControllers{
           };
           return reply(req,res,result)
   
+
+        }catch(err){
+            console.log(err);
+            return serverError(req,res,err)
+        }
+    }
+    async openAllTickets(req,res,next){
+        try{
+        
+            let openAll_Tickets=await ticketQuery.openAllTheTickets();
+            if(openAll_Tickets.acknowledged==true &&openAll_Tickets.modifiedCount>0 && openAll_Tickets.matchedCount>0){
+                return reply(req,res,"All The Tickets Are Opened")
+            }
+            return reply(req,res,"There is some issue In update");
+
 
         }catch(err){
             console.log(err);
