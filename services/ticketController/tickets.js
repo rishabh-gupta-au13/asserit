@@ -26,6 +26,11 @@ class ticketControllers{
         try{
             let {customerName,phoneNumber}=req.body
             let bookTicketes=await ticketQuery.bookTheTickets(customerName,phoneNumber);
+            console.log(bookTicketes,"===============================")
+            if(bookTicketes.length!=0){
+                return reply(req,res,`Ticket Suceesfully Booked For ${customerName} And Ticket Id Is ${bookTicketes[0]._id}`)
+            }
+            return reply(req,res,"Ticket Is Not Available")
 
         }catch(err){
             console.log(err);
