@@ -1,4 +1,23 @@
 {
+  "name": "asserit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishabh-gupta-au13/asserit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rishabh-gupta-au13/asserit/issues"
+  },
+  "homepage": "https://github.com/rishabh-gupta-au13/asserit#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
