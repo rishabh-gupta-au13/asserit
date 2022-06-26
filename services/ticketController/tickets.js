@@ -103,6 +103,22 @@ class ticketControllers{
             return serverError(req,res,err)
         }
     }
+    async getInfoOfPerson(req,res,next){
+        try{
+            let ticketNumber=req.query.ticketNumber;
+            let getInfo=await ticketQuery.getInfoOfTicket(ticketNumber);
+            if(getInfo && getInfo.length>0){
+                return reply(req,res,getInfo[0])
+            }
+            return reply(req,res,"Ticket Number Is Not Valid");
+
+
+        }catch(err){
+            console.log(err);
+            return serverError(req,res,err)
+        }
+
+    }
 }
 
 

@@ -12,6 +12,7 @@ app.patch("/bookTicket",validateJwtToken,ticketValidator.bookTicketValidator,tic
 app.get("/status",validateJwtToken,ticketValidator.statusTicketValidator,ticketControllers.getTicketStatus);
 app.get("/authenticate",ticketValidator.authenticateUser,ticketControllers.authenticateUsers);
 app.patch("/openAllTicket",validateJwtToken,ticketControllers.openAllTickets);
+app.get("/getInfoTicket",validateJwtToken,ticketValidator.getInfo,ticketControllers.getInfoOfPerson)
 
 
 

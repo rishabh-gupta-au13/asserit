@@ -84,7 +84,15 @@ class ticketQuery {
 
 
   }
-  
+  async getInfoOfTicket(ticketNumber){
+    try{
+      let getInfo=await ticketModel.find({ticketNumber:ticketNumber})
+      return getInfo
+
+    }catch(err){
+      console.log(err)
+    }
+  }
 
 
 }
