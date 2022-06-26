@@ -40,5 +40,24 @@ class ticketsValidator{
         }
 
     }
+    async authenticateUser(req,res,next){
+        const schema=Joi.object().keys({
+            name:Joi.string().required(),
+            password:Joi.string().required()
+        })
+        try{
+            const {error}=await schema.validate(req.query );
+            console.log(error);
+            if(error){
+                let message=error && error.details[0].message.replace(/"/g,"'");
+                return clientError(req,res,message);
+            }
+            return next();
+
+        }catch(error){
+            return serverError(req,res,error)
+        }
+
+    }
 }
 module.exports=new ticketsValidator()

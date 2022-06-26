@@ -1,39 +1,30 @@
-// const { default: mongoose } = require("mongoose");
+const mongoose  = require("mongoose");
 
-// const customers = new Schema({
-//     ticketId:{
-//         type:mongoose.Schema.Types.ObjectId
-//     },
-//     name:{
-//         type:String,
-//         required:true
+const admin = new Schema({
+   
+    name:{
+        type:String,
+        required:true
     
-//     },
-//     email:{
-//         type:String,
-//         unique:true,
-//         required:true
-//     },
-//     password:{
-//         type:String,
-//         required:true
-//     },
-//     isSuperAdmin:{
-//         type:String,
-//         default:"Not"
-//     },
-//     mobileNumber:{
-//         type:String,
-//         unique:true
-//     }
-//     },{timestamps:true});
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    mobileNumber:{
+        type:String,
+        unique:true
+    },
+   
+   
+    },{timestamps:true});
     
-//     customers.index({
-//       'name': 1,
-//       'email': 1,
-//       'password': 1,
-//       'mobileNumber': 1
-//     });
+    admin.index({
+      'name': 1,
+      'email': 1,
+      'password': 1,
+      'mobileNumber': 1
+    });
     
-//     // exporting the entire module
-//     module.exports = mongoose.model('passengers', passengers);
+    // exporting the entire module
+    module.exports = mongoose.model('admins', admin);

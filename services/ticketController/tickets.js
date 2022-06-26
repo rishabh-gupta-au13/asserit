@@ -1,6 +1,8 @@
 const { clientError, serverError, reply } = require("../../utilities/response");
 const ticketQuery = require("../../dataAdaptor/query/ticketQuery");
 const { errorMessages } = require("../error");
+const jwt=require("jsonwebtoken");
+const appConfig=require("../../configs/app.json")
 
 class ticketControllers{
     async getOpenTickets(req,res){
@@ -46,6 +48,40 @@ class ticketControllers{
             }
             return reply(req,res,"Ticket Number Is Not Present Please Contact Bus Owner");
 
+
+        }catch(err){
+            console.log(err);
+            return serverError(req,res,err)
+        }
+    }
+    async authenticateUsers(req,res,next){
+        try{
+            const name=req.query.name;
+            const password=req.query.password
+          //   first we will check whether userName exist in our database or not if it will not exist will throw the error
+          const checkUser=await ticketQuery.checkUser(name);
+          if(checkUser.length==0){
+              let message="User Not Exist"
+              return clientError(req,res,message)
+          }
+          // if user is present, verify the passowrd
+        //   let validPassword=await bcrypt.compare(password,checkEmail[0].password);
+          if(password != checkUser[0].password){
+              let message=errorMessages.invalidPassword;
+              return clientError(req,res,message)
+          }
+          // if the paswword is coreect will genrate json web token 
+          const token=jwt.sign(
+              {userId:checkUser[0]._id},
+              appConfig.jwtSecret,
+              {expiresIn:"24h"}
+          )
+          let result={
+              message:"Token Generated Sucessfully",
+              token:token,
+          };
+          return reply(req,res,result)
+  
 
         }catch(err){
             console.log(err);

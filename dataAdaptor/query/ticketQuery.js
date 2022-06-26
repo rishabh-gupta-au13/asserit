@@ -1,5 +1,5 @@
 const ticketModel = require("../models/tickets");
-const userModel = require("../models/user");
+const userModel = require("../models/admin");
 const mongoose = require("mongoose");
 const ObjectId = require("mongoose").ObjectId;
 const { serverError } = require("../../utilities/response");
@@ -56,6 +56,16 @@ class ticketQuery {
     }
 
   }
+  async checkUser(name){
+    try{
+      return await userModel.find({name:name});
+
+    }catch(err){
+      console.log(err)
+    }
+
+  }
+  
 
 
 }
