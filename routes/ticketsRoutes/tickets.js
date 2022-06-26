@@ -8,6 +8,7 @@ const ticketValidator=require("../../middleware/validation")
 app.get("/openTickets",ticketControllers.getOpenTickets);
 app.get ("/closeTickets",ticketControllers. getCloseTicketes);
 app.patch("/bookTicket",ticketValidator.bookTicketValidator,ticketControllers.bookTickets);
+app.get("/status",ticketValidator.statusTicketValidator,ticketControllers.getTicketStatus);
 
 
 

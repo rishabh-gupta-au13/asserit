@@ -47,6 +47,17 @@ class ticketQuery {
       console.log(err);
     }
   }
+  async getStatusOfTicket(ticketNumber){
+    try{
+      return await ticketModel.find({ticketNumber:ticketNumber});
+
+    }catch(err){
+      console.log(err)
+    }
+
+  }
+
+
 }
 
 module.exports = new ticketQuery();
