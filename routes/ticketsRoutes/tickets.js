@@ -5,7 +5,7 @@ const ticketValidator=require("../../middleware/validation");
 const {validateJwtToken}=require("../../middleware/verifyJwt");
 
 
-// To get the status of ticket
+// Routes
 app.get("/openTickets",validateJwtToken,ticketControllers.getOpenTickets);
 app.get ("/closeTickets",validateJwtToken,ticketControllers. getCloseTicketes);
 app.patch("/bookTicket",validateJwtToken,ticketValidator.bookTicketValidator,ticketControllers.bookTickets);
