@@ -15,7 +15,8 @@ class ticketControllers{
     }
     async getCloseTicketes(req,res){
         try{
-            let get_close_tickets=await ticketQuery.getTheCloseTickets()
+            let get_close_tickets=await ticketQuery.getTheCloseTickets();
+            return reply(req,res,get_close_tickets)
 
         }catch(err){
             console.log(err)
@@ -28,7 +29,7 @@ class ticketControllers{
             let bookTicketes=await ticketQuery.bookTheTickets(customerName,phoneNumber);
             console.log(bookTicketes,"===============================")
             if(bookTicketes.length!=0){
-                return reply(req,res,`Ticket Suceesfully Booked For ${customerName} And Ticket Id Is ${bookTicketes[0]._id}`)
+                return reply(req,res,`Ticket Suceesfully Booked For ${customerName} And Ticket Id Is ${bookTicketes[0]}`)
             }
             return reply(req,res,"Ticket Is Not Available")
 

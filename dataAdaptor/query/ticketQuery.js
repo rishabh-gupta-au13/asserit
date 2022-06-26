@@ -7,15 +7,15 @@ const { serverError } = require("../../utilities/response");
 class ticketQuery {
   async getTheOpenTickets() {
     try {
-      console.log("hello");
-      return ticketModel.find({ status: "Close" });
+      // console.log("hello");
+      return ticketModel.find({ status: "Open" });
     } catch (err) {
       console.log(err);
     }
   }
   async getTheCloseTickets() {
     try {
-      return ticketModel.find({ status: "Open" });
+      return ticketModel.find({ status: "Close" }, { bookingDetails: 0 });
     } catch (err) {
       console.log(err);
     }
@@ -24,20 +24,22 @@ class ticketQuery {
   async bookTheTickets(name, mobileNumber) {
     try {
       let bookTicket = await ticketModel.find({ status: "Open" }).limit(1);
-      let result=[];
+      let result = [];
+      let c = Date.now();
       // console.log(bookTicket, "=========================");
       if (bookTicket.length > 0) {
         let c1 = await ticketModel.updateOne(
           { _id: bookTicket[0]._id },
           {
             $set: {
-              status: "Close",
+              "status": "Close",
+              "ticketNumber": c,
               "bookingDetails.name": name,
               "bookingDetails.phoneNumber": mobileNumber,
             },
           }
         );
-        result.push(bookTicket[0]._id)
+        result.push(c);
         return result;
       }
       return result;
